@@ -5,6 +5,14 @@ const pageContainer = document.getElementById('pageContainer')
 
 const devsTitle = document.getElementById('devsTitle')
 
+if (window.matchMedia("(max-width: 1250px)").matches) {
+    welcomeText.innerText = 'Click to start ;)' 
+    welcomeButton.style.animation = 'opacityin 1s forwards'
+} else {
+    welcomeText.innerText = 'Hover to start ;)' 
+    welcomeButton.style.animation = 'opacityin 1s forwards'
+}
+
 window.addEventListener("mousemove", function (e) {
     let width = window.innerWidth
     let height = window.innerHeight
@@ -13,9 +21,11 @@ window.addEventListener("mousemove", function (e) {
 
     skew.y = (20 * ((e.x / width) - 0.5))
     skew.x = -(20 * ((e.y / height) - 0.5))
-
-    welcomeContainer.style.webkitTransform = "perspective(" + clientHeight + "px) rotateX(" + skew.x + "deg) rotateY(" + skew.y + "deg)"
-    devsTitle.style.webkitTransform = "perspective(" + clientHeight + "px) rotateX(" + skew.x + "deg) rotateY(" + skew.y + "deg)"
+      
+    if (!window.matchMedia("(max-width: 1250px)").matches) {
+        welcomeContainer.style.webkitTransform = "perspective(" + clientHeight + "px) rotateX(" + skew.x + "deg) rotateY(" + skew.y + "deg)"
+        devsTitle.style.webkitTransform = "perspective(" + clientHeight + "px) rotateX(" + skew.x + "deg) rotateY(" + skew.y + "deg)"
+    } 
 })
 
 let transitioning = false
@@ -38,7 +48,13 @@ welcomeContainer.addEventListener('click', () => {
 })
 
 welcomeContainer.onmouseenter = () => !transitioning && (welcomeText.innerText = 'Now click to see the magic!')
-welcomeContainer.onmouseleave = () => !transitioning ? welcomeText.innerText = 'Hover to start ;)' : welcomeButton.style.animation = 'opacityin 1s forwards'
+welcomeContainer.onmouseleave = () => {
+    if (window.matchMedia("(max-width: 1250px)").matches) {
+        !transitioning ? welcomeText.innerText = 'Click to start ;)' : welcomeButton.style.animation = 'opacityin 1s forwards'
+    } else {
+        !transitioning ? welcomeText.innerText = 'Hover to start ;)' : welcomeButton.style.animation = 'opacityin 1s forwards'
+    }
+}
 
 // PAGINA PRINCIPAL
 
