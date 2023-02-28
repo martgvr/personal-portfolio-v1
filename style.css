@@ -103,6 +103,7 @@ header {
     align-items: center;
     font-size: 1.8em;
     padding: 0 50px;
+    z-index: 4;
 }
 
 footer {
