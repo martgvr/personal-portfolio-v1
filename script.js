@@ -28,7 +28,7 @@ welcomeContainer.addEventListener('click', () => {
         transitioning = true
         welcomeText.innerText = 'Get ready bro!'
         setTimeout(() => {
-            document.body.style.filter = "invert(0)"
+            document.body.style.filter = ""
             setTimeout(() => {
                 welcomeContainer.remove()
                 showMainPage()
@@ -47,7 +47,9 @@ const main = document.getElementById('main')
 const footer = document.getElementById('footer')
 
 function showMainPage() {
+    welcomeContainer.style.display = 'none'
     pageContainer.style.display = 'grid'    
+
     header.style.animation = `opacityin 2s forwards`
     main.style.animation = `opacityin 2s ease-in-out 0.5s forwards`
     footer.style.animation = `opacityin 2s forwards`
