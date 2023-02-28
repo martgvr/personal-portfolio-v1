@@ -4,6 +4,7 @@ const welcomeButton = document.getElementById('welcomeButton')
 const pageContainer = document.getElementById('pageContainer')
 
 const devsTitle = document.getElementById('devsTitle')
+const background = document.getElementById('background')
 
 if (window.matchMedia("(max-width: 1250px)").matches) {
     welcomeText.innerText = 'Click to start ;)' 
@@ -25,6 +26,7 @@ window.addEventListener("mousemove", function (e) {
     if (!window.matchMedia("(max-width: 1250px)").matches) {
         welcomeContainer.style.webkitTransform = "perspective(" + clientHeight + "px) rotateX(" + skew.x + "deg) rotateY(" + skew.y + "deg)"
         devsTitle.style.webkitTransform = "perspective(" + clientHeight + "px) rotateX(" + skew.x + "deg) rotateY(" + skew.y + "deg)"
+        background.style = `transform: scaleY(${1.3 + (skew.y * 0.03)}) scaleX(${1.3 + (skew.x * 0.03)})`
     } 
 })
 
